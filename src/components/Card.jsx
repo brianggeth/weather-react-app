@@ -1,13 +1,11 @@
 import React from 'react';
 import CardTemp from './CardTemp';
+import propTypes from 'prop-types';
 
 export default function Card({max, min, name, img, onClose}) {
   // acá va tu código
-  function handleOnClose(){
-    if(typeof onClose === "function") onClose();
-  }
   return <div>
-    <button onClick={handleOnClose}> X </button>
+    <button onClick={onClose}> X </button>
     <span>{name}</span>
     <CardTemp label = "Min" value = {min}/>
     <CardTemp label = "Max" value = {max}/>
@@ -17,3 +15,11 @@ export default function Card({max, min, name, img, onClose}) {
     </div>
 };
 
+
+Card.propTypes = {
+  max: propTypes.number,
+  min: propTypes.number,
+  name: propTypes.string,
+  img: propTypes.string,
+  onClose: propTypes.func,
+}
